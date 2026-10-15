@@ -141,8 +141,8 @@ PyTorch · torchvision (Video Swin) · HuggingFace Transformers (mBART-50) · Me
 
 ## Authors
 
-- **Vũ Việt Hoàng**
-- **Mai Thái Bình**
+- **Vũ Việt Hoàng** - **23520548**
+- **Mai Thái Bình** - **23520158**
 
 Faculty of Computer Science, University of Information Technology (UIT), VNU-HCM
 Supervisor: **MSc. Cáp Phạm Đình Thăng**
