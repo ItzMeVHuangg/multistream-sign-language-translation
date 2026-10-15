@@ -1,0 +1,62 @@
+base_config: ../../configs/config.yaml
+
+main_pipeline:
+  name: "rover_main_cslr_slt_from_gt_oracle"
+  stream1_ckpt: "checkpoints/stream1_only/best_stream1.pth"
+  stream2_ckpt: "checkpoints/stream2_only/best_stream2.pth"
+  stream3_ckpt: "checkpoints/stream3_only/best_stream3.pth"
+  init_model: "checkpoints/ablations/main_pipeline_gt_oracle/best_main_pipeline_slt.pth"
+  output_dir: "checkpoints/ablations/main_pipeline_rover_finetune"
+  log_dir: "logs/ablations/main_pipeline_rover_finetune"
+  train_gloss_source: "rover"
+  eval_gloss_source: "rover"
+  visual_sources: ["s1", "s2", "s3"]
+  visual_target: "s3"
+  visual_weights: [1.0, 0.3, 1.0]
+  use_gloss_text_encoder: true
+  gloss_text_lower: true
+  max_gloss_text_tokens: 96
+  slt_beam_width: 2
+  sample_predictions: 3
+
+three_stream:
+  share_swin: false
+  primary_output: "rover"
+
+ensemble:
+  beam_width: 1
+  lm_weight: 0.0
+  use_lm: false
+  stream_weights: [1.0, 0.3, 1.0]
+
+data:
+  num_workers: 8
+  pin_memory: true
+  prefetch_factor: 2
+  persistent_workers: true
+
+slt:
+  num_epochs: 12
+  learning_rate: 5.0e-6
+  warmup_steps: 250
+  label_smoothing: 0.0
+  early_stopping:
+    enabled: true
+    patience: 4
+    metric: "BLEU-4"
+  llm_trainable_modules:
+    - "encoder_attn"
+    - "self_attn"
+    - "fc"
+    - "visual_adapter"
+    - "visual_prefix"
+    - "prefix_cross_attn"
+    - "prefix_norm"
+    - "lm_head"
+
+llm:
+  max_gen_length: 96
+  num_beams: 2
+  no_repeat_ngram_size: 3
+  repetition_penalty: 1.1
+  length_penalty: 0.9

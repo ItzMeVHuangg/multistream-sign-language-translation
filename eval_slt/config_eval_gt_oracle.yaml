@@ -1,0 +1,14 @@
+output_dir: "output/eval_slt_gt_oracle"
+
+eval:
+  splits: ["dev", "test"]
+  batch_size: 2
+  num_workers: 8
+  pin_memory: true
+  use_amp: true
+
+models:
+  main_pipeline:
+    enabled: true
+    config: "ablations/main_pipeline/config_main_pipeline_gt_oracle.yaml"
+    checkpoint: "checkpoints/ablations/main_pipeline_gt_oracle/best_main_pipeline_slt.pth"

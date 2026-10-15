@@ -1,0 +1,7 @@
+base_config: ../../configs/config.yaml
+
+ensemble:
+  beam_width: 1
+  lm_weight: 0.0
+  use_lm: false
+  stream_weights: [1.0, 1.0, 1.0]

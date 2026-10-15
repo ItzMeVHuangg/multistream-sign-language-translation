@@ -1,0 +1,13 @@
+output_dir: "output/compare_generated_sentences"
+
+model:
+  config: "ablations/main_pipeline/config_main_pipeline.yaml"
+  checkpoint: "checkpoints/ablations/main_pipeline/best_main_pipeline_slt.pth"
+
+eval:
+  split: "test"
+  num_samples: 10
+  batch_size: 2
+  num_workers: 8
+  pin_memory: true
+  use_amp: true

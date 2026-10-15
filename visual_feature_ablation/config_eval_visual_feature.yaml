@@ -1,0 +1,17 @@
+output_dir: "output/visual_feature_ablation"
+
+eval:
+  splits: ["dev", "test"]
+  batch_size: 2
+  num_workers: 8
+  pin_memory: true
+  use_amp: true
+
+variants:
+  with_visual:
+    config: "ablations/main_pipeline/config_main_pipeline.yaml"
+    checkpoint: "checkpoints/ablations/main_pipeline/best_main_pipeline_slt.pth"
+
+  no_visual:
+    config: "visual_feature_ablation/config_no_visual.yaml"
+    checkpoint: "checkpoints/visual_feature_ablation/no_visual/best_main_pipeline_slt.pth"

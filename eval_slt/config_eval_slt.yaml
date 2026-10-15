@@ -1,0 +1,24 @@
+output_dir: "output/eval_slt"
+
+eval:
+  splits: ["dev", "test"]
+  batch_size: 2
+  num_workers: 8
+  pin_memory: true
+  use_amp: true
+
+models:
+  main_pipeline:
+    enabled: true
+    config: "ablations/main_pipeline/config_main_pipeline.yaml"
+    checkpoint: "checkpoints/ablations/main_pipeline/best_main_pipeline_slt.pth"
+
+  baseline_s1:
+    enabled: true
+    config: "ablations/baseline_s1_slt/config_baseline_s1_slt.yaml"
+    checkpoint: "checkpoints/ablations/baseline_s1_slt/best_baseline_s1_slt.pth"
+
+  baseline_s3:
+    enabled: true
+    config: "ablations/baseline_s3_slt/config_baseline_s3_slt.yaml"
+    checkpoint: "checkpoints/ablations/baseline_s3_slt/best_baseline_s3_slt.pth"

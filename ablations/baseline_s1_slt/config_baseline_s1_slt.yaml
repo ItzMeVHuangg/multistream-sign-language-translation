@@ -1,0 +1,29 @@
+base_config: ../../configs/config.yaml
+
+baseline_s1:
+  name: "baseline_s1_only_slt"
+  stream1_ckpt: "checkpoints/stream1_only/best_stream1.pth"
+  output_dir: "checkpoints/ablations/baseline_s1_slt"
+  log_dir: "logs/ablations/baseline_s1_slt"
+  train_gloss_source: "predicted"      # match evaluation/deployed input distribution
+  eval_gloss_source: "predicted"       # S1-only CSLR -> SLT ablation
+  decode_mode: "greedy"
+  beam_width: 1
+  sample_predictions: 3
+
+data:
+  num_workers: 8
+  pin_memory: true
+  prefetch_factor: 2
+  persistent_workers: true
+
+llm:
+  max_gen_length: 64
+
+ensemble:
+  # Not used by the S1-only model, kept for traceability.
+  stream_weights: [1.0, 0.0, 0.0]
+
+slt:
+  learning_rate: 1.0e-5
+  warmup_steps: 500
