@@ -10,7 +10,7 @@
   <img alt="Dataset" src="https://img.shields.io/badge/Dataset-PHOENIX--2014T-6A5ACD">
 </p>
 
-This is the code for my undergraduate thesis at the **University of Information Technology, VNU-HCM** (Computer Science, 2026):
+This project was built as an undergraduate thesis at the **University of Information Technology, VNU-HCM** (Computer Science, 2026):
 *"Continuous Sign Language Recognition and Translation from Video to Text using Deep Learning"*.
 
 ---
@@ -139,9 +139,12 @@ Each ablation folder has its own README with instructions for that experiment. I
 
 PyTorch · torchvision (Video Swin) · HuggingFace Transformers (mBART-50) · MediaPipe · CTC · NLTK / ROUGE · TensorBoard · SLURM on an NVIDIA DGX A100
 
-## Author
+## Authors
 
-**Mai Thái Bình**, Faculty of Computer Science, University of Information Technology (UIT), VNU-HCM
+- **Vũ Việt Hoàng**
+- **Mai Thái Bình**
+
+Faculty of Computer Science, University of Information Technology (UIT), VNU-HCM
 Supervisor: **MSc. Cáp Phạm Đình Thăng**
 
 ## Acknowledgements
